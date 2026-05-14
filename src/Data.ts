@@ -14,3 +14,32 @@ const employees : Employee[] = [
     { name: "David", age: 42, salary: 85000},
     { name: "Emma", age: 27, salary: 60000}
 ]
+
+function findEmployeeByName(name: string): Employee | undefined {
+    return employees.find(employee => employee.name === name);
+}
+
+function getEmployeesWithSalaryGreaterThan(salary: number): Employee[] {
+    return employees.filter(employee => employee.salary > salary);
+}
+
+function getEmployeesWithSalaryGreaterThanAndAgeGreaterThan(salary: number, age: number): Employee[] {
+    return employees.filter(employee => employee.salary > salary && employee.age > age);
+}
+
+function getAllEmployeeNames(): string[] { 
+    return employees.map(employee => employee.name);
+}
+
+function getMaximumSalary(): number {
+    return Math.max(...employees.map(employee => employee.salary));
+}
+
+// use reduce
+function getMaximumSalary2(): number {
+    return employees.reduce((max, employee) => Math.max(max, employee.salary), 0);
+}
+
+function getAverageSalary(): number {
+    return employees.reduce((sum, employee) => sum + employee.salary, 0) / employees.length;
+}
